@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "8010cade-9bde-427e-b4bc-340a23cb9cd9",
+		"name": "Asociacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8568629"
+	},
+	"item": [
+		{
+			"name": "add supermercado to ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado/{{supermercado_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado",
+						"{{supermercado_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add invalid supermercado to ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The Supermercado with id 00000000-0000-0000-0000-000000000000, was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado/00000000-0000-0000-0000-000000000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all supermercados from a ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a supermercado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado/{{supermercado_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado",
+						"{{supermercado_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a supermercado not asociate to ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The Supermercado with id 00000000-0000-0000-0000-000000000000, was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado/00000000-0000-0000-0000-000000000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update supermercados on ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"{{supermercado_id}}\",\r\n        \"nombre\": \"La mejor tienda de la ciudad\",\r\n        \"longitud\": 5.7225,\r\n        \"latitud\": 2.68452,\r\n        \"paginaWeb\": \"www.pruebas.com\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update invalid supermercados on ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The Supermercado with id 00000000-0000-0000-0000-000000000000, was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"nombre\": \"La mejor tienda de la ciudad\",\r\n        \"longitud\": 5.7225,\r\n        \"latitud\": 2.68452,\r\n        \"paginaWeb\": \"www.pruebas.com\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete supermercado from ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado/{{supermercado_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado",
+						"{{supermercado_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete an invalid supermercado from ciudad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ciudad/{{ciudad_id}}/supermercado/00000000-0000-0000-0000-000000000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ciudad",
+						"{{ciudad_id}}",
+						"supermercado",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
