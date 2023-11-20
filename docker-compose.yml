@@ -16,8 +16,3 @@ services:
       interval: 2s
       timeout: 5s
       retries: 5
-#     networks:
-#       - nest_app
-# networks:
-#   nest_app:
-#   web_global:
